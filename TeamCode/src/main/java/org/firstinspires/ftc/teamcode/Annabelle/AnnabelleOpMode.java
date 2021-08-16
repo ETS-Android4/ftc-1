@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-@TeleOp(name="Gamepad Drive", group="Experimenting")
+@TeleOp(name="Gamepad Drive Android Studio", group="Experimenting")
 public class AnnabelleOpMode extends OpMode {
 
     AnnabelleDriveController driveController;
