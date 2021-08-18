@@ -1,10 +1,9 @@
-package org.firstinspires.ftc.teamcode.Annabelle;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-@TeleOp(name="Gamepad Drive Android Studio", group="Experimenting")
+@TeleOp(name="Gamepad Drive", group="Experimenting")
 public class AnnabelleOpMode extends OpMode {
 
     AnnabelleDriveController driveController;
