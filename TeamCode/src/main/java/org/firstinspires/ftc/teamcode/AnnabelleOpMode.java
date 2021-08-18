@@ -8,8 +8,8 @@ public class AnnabelleOpMode extends OpMode {
 
     AnnabelleDriveController driveController;
 
-    double leftWheelPower;
-    double rightWheelPower;
+    double forwardPower;
+    double rotation;
 
     @Override
     public void init() {
@@ -29,13 +29,15 @@ public class AnnabelleOpMode extends OpMode {
 
     @Override
     public void loop() {
-        leftWheelPower = gamepad1.left_stick_y;
-        rightWheelPower = gamepad1.right_stick_y;
+        forwardPower = gamepad1.left_stick_y;
+        rotation = gamepad1.left_stick_x;
 
-        telemetry.addData("test", AnnabelleDriveController.ALL | AnnabelleDriveController.LEFTFRONT);
+        telemetry.addData("Power", forwardPower);
+        telemetry.addData("Rotation", rotation);
 
-        driveController.setPower(leftWheelPower, AnnabelleDriveController.ALL);
-        driveController.step();
+        driveController.setPower(forwardPower);
+        driveController.setRotation(rotation);
+        driveController.step(telemetry);
     }
 
 }

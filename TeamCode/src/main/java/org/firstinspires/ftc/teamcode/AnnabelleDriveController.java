@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 
 public class AnnabelleDriveController {
 
@@ -10,22 +12,8 @@ public class AnnabelleDriveController {
     DcMotor rf;
     DcMotor rb;
 
-    double lfPower;
-    double lbPower;
-    double rfPower;
-    double rbPower;
-
-
-    public static final short NONE        = 0b0000;
-    public static final short LEFTFRONT   = 0b0001;
-    public static final short LEFTBACK    = 0b0010;
-    public static final short RIGHTFRONT  = 0b0100;
-    public static final short RIGHTBACK   = 0b1000;
-    public static final short LEFT        = 0b0011;
-    public static final short RIGHT       = 0b1100;
-    public static final short ALL         = 0b1111;
-
-    double power;
+    double forwardPower;
+    double rotation;
 
     public AnnabelleDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm) {
         lf = lfm;
@@ -39,22 +27,28 @@ public class AnnabelleDriveController {
         rb.setDirection(DcMotor.Direction.REVERSE);
     }
 
+    /* Set control vals */
     public void setPower(double pwr) {
-        setPower(pwr, NONE);
+        forwardPower = pwr;
     }
 
-    public void setPower(double pwr, short motor) {
-        if ((motor | LEFTFRONT) != 0)   lfPower = pwr;
-        if ((motor | LEFTBACK) != 0)    lbPower = pwr;
-        if ((motor | RIGHTFRONT) != 0)  rfPower = pwr;
-        if ((motor | RIGHTBACK) != 0)   rbPower = pwr;
+    public void setRotation(double rot) {
+        rotation = rot;
     }
 
-    public void step() {
-        lf.setPower(lfPower);
-        lb.setPower(lbPower);
-        rf.setPower(rfPower);
-        rb.setPower(rbPower);
+    public void step(Telemetry telemetry) {
+
+        double rightPower = rotation + forwardPower;
+        double leftPower = -rotation + forwardPower;
+
+        telemetry.addData("RightPower", rightPower);
+        telemetry.addData("LeftPower", leftPower);
+
+        lf.setPower(leftPower);
+        lb.setPower(leftPower);
+
+        rf.setPower(rightPower);
+        rb.setPower(rightPower);
     }
 
 }
