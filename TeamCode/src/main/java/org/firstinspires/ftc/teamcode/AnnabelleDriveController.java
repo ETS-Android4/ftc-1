@@ -14,6 +14,15 @@ public class AnnabelleDriveController {
 
     double forwardPower;
     double rotation;
+    double strafe;
+
+    double lfPower;
+    double lbPower;
+    double rfPower;
+    double rbPower;
+
+    short SIDE_RIGHT = 1;
+    short SIDE_LEFT  = 2;
 
     public AnnabelleDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm) {
         lf = lfm;
@@ -27,7 +36,7 @@ public class AnnabelleDriveController {
         rb.setDirection(DcMotor.Direction.REVERSE);
     }
 
-    /* Set control vals */
+    /* Set control values */
     public void setPower(double pwr) {
         forwardPower = pwr;
     }
@@ -36,19 +45,60 @@ public class AnnabelleDriveController {
         rotation = rot;
     }
 
+    public void setStrafe(double str) {
+        strafe = str;
+    }
+
+    private void setSidePower(short side, double pwr) {
+        if (side == SIDE_LEFT) {
+            lfPower = pwr;
+            lbPower = pwr;
+        } else if (side == SIDE_RIGHT) {
+            rfPower = pwr;
+            rbPower = pwr;
+        }
+    }
+
     public void step(Telemetry telemetry) {
 
-        double rightPower = rotation + forwardPower;
-        double leftPower = -rotation + forwardPower;
+        if ((strafe > 0.5 || strafe < -0.5) && rotation != 0) rotation = 0;
 
-        telemetry.addData("RightPower", rightPower);
-        telemetry.addData("LeftPower", leftPower);
+        setSidePower(SIDE_RIGHT, rotation + forwardPower);
+        setSidePower(SIDE_LEFT, -rotation + forwardPower);
 
-        lf.setPower(leftPower);
-        lb.setPower(leftPower);
+        if (strafe > 0.5 || strafe < -0.5) {
+            if (rotation != 0) rotation = 0;
+            if ((forwardPower > -0.5 && forwardPower < 0.5)) {
+                /* Left and Right */
+                rbPower = strafe;
+                rfPower = -strafe;
+                lfPower = strafe;
+                lbPower = -strafe;
+            } else if (forwardPower < -0.5) {
+                /* Diagonal up right and down left */
+                lfPower = Math.floor(strafe * 2);
+                lbPower = 0;
+                rfPower = 0;
+                rbPower = Math.floor(strafe * 2);
+            } else if (forwardPower > 0.5) {
+                /* Diagonal up left and down right */
+                lfPower = 0;
+                lbPower = Math.floor(strafe * 2);
+                rfPower = Math.floor(strafe * 2);
+                rbPower = 0;
+            }
+        }
 
-        rf.setPower(rightPower);
-        rb.setPower(rightPower);
+        telemetry.addData("Left Front Power", lfPower);
+        telemetry.addData("Left Back Power", lbPower);
+        telemetry.addData("Right Front Power", rfPower);
+        telemetry.addData("Right Back Power", rbPower);
+
+        lf.setPower(lfPower);
+        lb.setPower(lbPower);
+
+        rf.setPower(rfPower);
+        rb.setPower(rbPower);
     }
 
 }
