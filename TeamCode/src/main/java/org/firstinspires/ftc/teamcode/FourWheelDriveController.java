@@ -12,13 +12,13 @@ public class FourWheelDriveController {
     DcMotor rf;
     DcMotor rb;
 
-    double forwardPower;
-    double rotation;
+    protected double forwardPower;
+    protected double rotation;
 
-    double lfPower;
-    double lbPower;
-    double rfPower;
-    double rbPower;
+    protected double lfPower;
+    protected double lbPower;
+    protected double rfPower;
+    protected double rbPower;
 
     static final short SIDE_RIGHT = 1;
     static final short SIDE_LEFT  = 2;
@@ -49,7 +49,7 @@ public class FourWheelDriveController {
         }
     }
 
-    public void step() {
+    protected void step() {
         lf.setPower(lfPower);
         lb.setPower(lbPower);
 
