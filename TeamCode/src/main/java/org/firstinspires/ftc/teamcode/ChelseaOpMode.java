@@ -18,7 +18,8 @@ public class ChelseaOpMode extends OpMode {
                 hardwareMap.dcMotor.get("left_front_motor"),
                 hardwareMap.dcMotor.get("left_back_motor"),
                 hardwareMap.dcMotor.get("right_front_motor"),
-                hardwareMap.dcMotor.get("right_back_motor")
+                hardwareMap.dcMotor.get("right_back_motor"),
+                true
         );
         telemetry.addData("Starting at",  "  %d : %d : %d : %d",
                 driveController.lf.getCurrentPosition(),

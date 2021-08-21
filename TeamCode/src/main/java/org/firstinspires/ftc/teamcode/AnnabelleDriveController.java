@@ -7,13 +7,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class AnnabelleDriveController extends FourWheelDriveController {
 
-    public AnnabelleDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm) {
-        super(lfm, lbm, rfm, rbm);
-
-        lf.setDirection(DcMotor.Direction.FORWARD);
-        lb.setDirection(DcMotor.Direction.FORWARD);
-        rf.setDirection(DcMotor.Direction.REVERSE);
-        rb.setDirection(DcMotor.Direction.REVERSE);
+    public AnnabelleDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm, boolean invert) {
+        super(lfm, lbm, rfm, rbm, invert);
     }
 
     public void step(Telemetry telemetry) {

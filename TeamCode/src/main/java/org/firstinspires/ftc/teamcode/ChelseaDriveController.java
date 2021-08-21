@@ -8,8 +8,8 @@ public class ChelseaDriveController extends FourWheelDriveController {
 
     double strafe;
 
-    public ChelseaDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm) {
-        super(lfm, lbm, rfm, rbm);
+    public ChelseaDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm, boolean invert) {
+        super(lfm, lbm, rfm, rbm, invert);
 
         lf.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         lb.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -20,6 +20,8 @@ public class ChelseaDriveController extends FourWheelDriveController {
         lb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         lb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
     }
 
     public void setStrafe(double str) {
