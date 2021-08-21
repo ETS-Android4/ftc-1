@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -23,11 +24,25 @@ public class FourWheelDriveController {
     static final short SIDE_RIGHT = 1;
     static final short SIDE_LEFT  = 2;
 
-    public FourWheelDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm) {
+    public FourWheelDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm, boolean invert) {
         lf = lfm;
         lb = lbm;
         rf = rfm;
         rb = rbm;
+
+        if (invert) {
+            lf.setDirection(DcMotor.Direction.REVERSE);
+            lb.setDirection(DcMotor.Direction.REVERSE);
+            rf.setDirection(DcMotor.Direction.FORWARD);
+            rb.setDirection(DcMotor.Direction.FORWARD);
+        } else {
+            lf.setDirection(DcMotor.Direction.FORWARD);
+            lb.setDirection(DcMotor.Direction.FORWARD);
+            rf.setDirection(DcMotor.Direction.REVERSE);
+            rb.setDirection(DcMotor.Direction.REVERSE);
+        }
+
+
     }
 
     /* Set control values */
