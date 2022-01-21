@@ -1,16 +1,16 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.old;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name="Chelsea TeleOp", group="Experimenting")
 public class ChelseaOpMode extends OpMode {
-
     ChelseaDriveController driveController;
 
     double forward;
     double rotation;
-    double strafe;
+    double x;
+    double y;
 
     @Override
     public void init() {
@@ -32,16 +32,17 @@ public class ChelseaOpMode extends OpMode {
 
     @Override
     public void loop() {
-        forward = gamepad1.left_stick_y;
+        forward = gamepad1.right_trigger;
         rotation = gamepad1.right_stick_x;
-        strafe = gamepad1.left_stick_x;
+        x = gamepad1.left_stick_x;
+        y = gamepad1.left_stick_y;
 
         driveController.setPower(forward);
-        driveController.setStrafe(strafe);
+        driveController.setX(x);
+        driveController.setY(y);
         driveController.setRotation(rotation);
 
         telemetry.addData("Power", forward);
-        telemetry.addData("Strafe", strafe);
         telemetry.addData("Rotation", rotation);
 
         driveController.step(telemetry);

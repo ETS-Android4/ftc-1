@@ -27,15 +27,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.old;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-
-import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 /**
  * This file illustrates the concept of driving a path based on encoder counts.
@@ -64,14 +59,20 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Pushbot: Auto Drive By Encoder", group="Pushbot")
+@Autonomous(name="Chelsea AutoOp", group="Experimenting")
 public class ChelseaAutoOp extends OpMode {
 
-    
+    ChelseaDriveController driveController;
 
     @Override
     public void init() {
-
+        driveController = new ChelseaDriveController(
+                hardwareMap.dcMotor.get("left_front_motor"),
+                hardwareMap.dcMotor.get("left_back_motor"),
+                hardwareMap.dcMotor.get("right_front_motor"),
+                hardwareMap.dcMotor.get("right_back_motor"),
+                true
+        );
     }
 
     @Override

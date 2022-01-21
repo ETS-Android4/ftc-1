@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.old;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -23,6 +23,7 @@ public class FourWheelDriveController {
 
     static final short SIDE_RIGHT = 1;
     static final short SIDE_LEFT  = 2;
+    static final short SIDE_BOTH  = 3;
 
     public FourWheelDriveController(DcMotor lfm, DcMotor lbm, DcMotor rfm, DcMotor rbm, boolean invert) {
         lf = lfm;
@@ -55,10 +56,11 @@ public class FourWheelDriveController {
     }
 
     protected void setSidePower(short side, double pwr) {
-        if (side == SIDE_LEFT) {
+        if (side == SIDE_LEFT || side == SIDE_BOTH) {
             lfPower = pwr;
             lbPower = pwr;
-        } else if (side == SIDE_RIGHT) {
+        }
+        if (side == SIDE_RIGHT || side == SIDE_BOTH) {
             rfPower = pwr;
             rbPower = pwr;
         }
