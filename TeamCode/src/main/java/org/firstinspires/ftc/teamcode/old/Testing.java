@@ -18,7 +18,7 @@ public class Testing extends OpMode {
         telemetry.update();
 
         lift_left = hardwareMap.get(DcMotor.class, "lift_l");
-        lift_right = hardwareMap.get(DcMotor.class "lift_r");
+        lift_right = hardwareMap.get(DcMotor.class, "lift_r");
 
         lift_left.setTargetPosition(0);
         lift_left.setDirection(DcMotorSimple.Direction.FORWARD);
