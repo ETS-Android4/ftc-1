@@ -18,8 +18,8 @@ public class DeanaController {
         motor_lb = new DeanaMotor(hardwareMap.dcMotor.get("motor_lb"), false);
         motor_rf = new DeanaMotor(hardwareMap.dcMotor.get("motor_rf"), true);
         motor_rb = new DeanaMotor(hardwareMap.dcMotor.get("motor_rb"), true);
-        arm_l = new DeanaArm(hardwareMap.dcMotor.get("lift_l"));
-        arm_r = new DeanaArm(hardwareMap.dcMotor.get("lift_r"));
+        arm_l = new DeanaArm(hardwareMap.dcMotor.get("lift_l"), false);
+        arm_r = new DeanaArm(hardwareMap.dcMotor.get("lift_r"), true);
     }
 
     public void move_forward(double power) {
@@ -29,6 +29,13 @@ public class DeanaController {
         motor_rb.run(power);
         arm_r.run();
         arm_l.run();
+    }
+
+    public void rotate(double power) {
+        motor_lf.run(power);
+        motor_lb.run(power);
+        motor_rf.run(-power);
+        motor_rb.run(-power);
     }
 
     public void extend_arm() {
@@ -41,4 +48,8 @@ public class DeanaController {
         arm_r.retract();
     }
 
+    public void starting_position() {
+        arm_l.set_position(1000);
+        arm_r.set_position(1000);
+    }
 }

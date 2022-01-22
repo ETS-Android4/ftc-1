@@ -5,23 +5,24 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class DeanaArm {
 
-    private final int extend_length = 1000;
+    private final int extend_length = 8000;
     private DcMotor motor;
 
-    public DeanaArm(DcMotor m) {
+    public DeanaArm(DcMotor m, boolean reverse) {
         motor = m;
 
         motor.setTargetPosition(0);
-        motor.setDirection(DcMotorSimple.Direction.FORWARD);
+        if (reverse) motor.setDirection(DcMotor.Direction.REVERSE);
+        else motor.setDirection(DcMotor.Direction.FORWARD);
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     public void run() {
-        motor.setPower(0.5);
+        motor.setPower(0.75);
     }
 
-    public int getPosition() {
-        return motor.getCurrentPosition();
+    public void set_position(int position) {
+        motor.setTargetPosition(position);
     }
 
     public void extend() {
