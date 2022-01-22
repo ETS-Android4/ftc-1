@@ -15,7 +15,7 @@ public class CalibrateArm extends OpMode {
         telemetry.addData("Status", "Initializing...");
         telemetry.update();
 
-        arm_motor = hardwareMap.get(DcMotor.class, "left_front_motor");
+        arm_motor = hardwareMap.get(DcMotor.class, "lift_r");
 
         arm_motor.setDirection(DcMotorSimple.Direction.REVERSE);
         //arm_motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
