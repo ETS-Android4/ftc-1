@@ -9,8 +9,10 @@ public class DeanaController {
     private DeanaMotor motor_lb;
     private DeanaMotor motor_rf;
     private DeanaMotor motor_rb;
-    public DeanaArm arm_l;
-    public DeanaArm arm_r;
+    private DeanaArm arm_l;
+    private DeanaArm arm_r;
+
+    public boolean arm_moving;
 
     public DeanaController(HardwareMap hardwareMap) {
         // Init Hardware
@@ -27,8 +29,6 @@ public class DeanaController {
         motor_lb.run(power);
         motor_rf.run(power);
         motor_rb.run(power);
-        arm_r.run();
-        arm_l.run();
     }
 
     public void rotate(double power) {
@@ -41,6 +41,14 @@ public class DeanaController {
     public void extend_arm() {
         arm_l.extend();
         arm_r.extend();
+        arm_moving = true;
+    }
+
+    public void run_arm() {
+        arm_l.run();
+        arm_r.run();
+
+        arm_moving = arm_l.arm_moving || arm_r.arm_moving;
     }
 
     public void retract_arm() {
@@ -49,7 +57,7 @@ public class DeanaController {
     }
 
     public void starting_position() {
-        arm_l.set_position(1000);
-        arm_r.set_position(1000);
+        arm_l.set_position(1250);
+        arm_r.set_position(1250);
     }
 }

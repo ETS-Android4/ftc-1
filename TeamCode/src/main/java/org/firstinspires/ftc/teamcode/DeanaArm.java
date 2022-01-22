@@ -8,6 +8,8 @@ public class DeanaArm {
     private final int extend_length = 8000;
     private DcMotor motor;
 
+    public boolean arm_moving;
+
     public DeanaArm(DcMotor m, boolean reverse) {
         motor = m;
 
@@ -18,7 +20,10 @@ public class DeanaArm {
     }
 
     public void run() {
-        motor.setPower(0.75);
+        if (motor.getTargetPosition() != motor.getCurrentPosition()) {
+            motor.setPower(0.75);
+            arm_moving = true;
+        } else arm_moving = false;
     }
 
     public void set_position(int position) {
