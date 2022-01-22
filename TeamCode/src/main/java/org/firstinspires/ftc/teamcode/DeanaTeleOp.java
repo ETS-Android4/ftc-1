@@ -22,6 +22,8 @@ public class DeanaTeleOp extends OpMode {
         if (gamepad1.a) controller.extend_arm();
         if (gamepad1.b) controller.retract_arm();
         if (gamepad1.y) controller.starting_position();
+        if (gamepad1.left_trigger > 0) controller.run_intake(gamepad1.left_trigger);
+        if (gamepad1.right_trigger > 0) controller.run_intake(-gamepad1.right_trigger);
 
         if (controller.arm_moving) controller.run_arm();
 

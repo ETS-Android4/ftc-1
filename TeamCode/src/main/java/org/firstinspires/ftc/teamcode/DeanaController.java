@@ -5,12 +5,15 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class DeanaController {
 
-    private DeanaMotor motor_lf;
-    private DeanaMotor motor_lb;
-    private DeanaMotor motor_rf;
-    private DeanaMotor motor_rb;
-    private DeanaArm arm_l;
-    private DeanaArm arm_r;
+    private final DeanaMotor motor_lf;
+    private final DeanaMotor motor_lb;
+    private final DeanaMotor motor_rf;
+    private final DeanaMotor motor_rb;
+    private final DeanaArm arm_l;
+    private final DeanaArm arm_r;
+    private final DeanaServo cup_l;
+    private final DeanaServo cup_r;
+    private final DeanaIntake intake;
 
     public boolean arm_moving;
 
@@ -22,6 +25,9 @@ public class DeanaController {
         motor_rb = new DeanaMotor(hardwareMap.dcMotor.get("motor_rb"), true);
         arm_l = new DeanaArm(hardwareMap.dcMotor.get("lift_l"), false);
         arm_r = new DeanaArm(hardwareMap.dcMotor.get("lift_r"), true);
+        cup_l = new DeanaServo(hardwareMap.servo.get("cup_l"), false);
+        cup_r = new DeanaServo(hardwareMap.servo.get("cup_r"), true);
+        intake = new DeanaIntake(hardwareMap.crservo.get("intake"));
     }
 
     public void move_forward(double power) {
@@ -42,6 +48,15 @@ public class DeanaController {
         arm_l.extend();
         arm_r.extend();
         arm_moving = true;
+    }
+
+    public void spin_cup() {
+        cup_l.spin();
+        cup_r.spin();
+    }
+
+    public void run_intake(double power) {
+        intake.run(power);
     }
 
     public void run_arm() {
