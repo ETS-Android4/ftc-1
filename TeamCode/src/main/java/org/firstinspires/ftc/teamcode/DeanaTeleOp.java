@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.CRServo;
 
 @TeleOp(name="DeanaController", group="Production")
 public class DeanaTeleOp extends OpMode {
@@ -18,17 +16,21 @@ public class DeanaTeleOp extends OpMode {
     @Override
     public void loop() {
 
-        if (gamepad1.right_stick_x == 0 ) controller.move_forward(-gamepad1.left_stick_y);
-        if (gamepad1.left_stick_y == 0) controller.rotate(-gamepad1.right_stick_x);
+        // Movement
+        if (gamepad1.dpad_right) controller.strafe(1.0);
+        else if (gamepad1.dpad_left) controller.strafe(-1.0);
+        else if (gamepad1.right_stick_x == 0 ) controller.move_forward(-gamepad1.left_stick_y);
+        else if (gamepad1.left_stick_y == 0) controller.rotate(-gamepad1.right_stick_x);
 
+        // Arm/Intake
         if (gamepad1.a) controller.extend_arm();
         if (gamepad1.b) controller.retract_arm();
         if (gamepad1.y) controller.starting_position();
         if (gamepad1.right_trigger > 0) controller.run_intake(-gamepad1.right_trigger);
         else controller.run_intake(gamepad1.left_trigger);
 
-        telemetry.addData("Left Trigger", gamepad1.left_trigger);
-        telemetry.addData("Right Trigger", gamepad1.right_trigger);
+        // Carousel
+        if (gamepad1.x) controller.run_carousel(1.0);
 
         if (controller.arm_moving) controller.run_arm();
 

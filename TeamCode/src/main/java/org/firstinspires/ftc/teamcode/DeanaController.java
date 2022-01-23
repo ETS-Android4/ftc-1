@@ -13,7 +13,8 @@ public class DeanaController {
     private final DeanaArm arm_r;
     private final DeanaServo cup_l;
     private final DeanaServo cup_r;
-    private DeanaIntake intake;
+    private final DeanaIntake intake;
+    private final DeanaMotor carousel;
 
     public boolean arm_moving;
 
@@ -28,6 +29,7 @@ public class DeanaController {
         cup_l = new DeanaServo(hardwareMap.servo.get("cup_l"), false);
         cup_r = new DeanaServo(hardwareMap.servo.get("cup_r"), true);
         intake = new DeanaIntake(hardwareMap.crservo.get("intake"));
+        carousel = new DeanaMotor(hardwareMap.dcMotor.get("carousel"), false);
     }
 
     public void move_forward(double power) {
@@ -77,5 +79,16 @@ public class DeanaController {
     public void starting_position() {
         arm_l.set_position(1250);
         arm_r.set_position(1250);
+    }
+
+    public void strafe(double power) {
+        motor_lf.run(-power);
+        motor_lb.run(power);
+        motor_rf.run(power);
+        motor_rb.run(-power);
+    }
+
+    public void run_carousel(double power) {
+        carousel.run(power);
     }
 }
