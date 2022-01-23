@@ -13,7 +13,7 @@ public class DeanaController {
     private final DeanaArm arm_r;
     private final DeanaServo cup_l;
     private final DeanaServo cup_r;
-    private final DeanaIntake intake;
+    private DeanaIntake intake;
 
     public boolean arm_moving;
 
@@ -47,6 +47,7 @@ public class DeanaController {
     public void extend_arm() {
         arm_l.extend();
         arm_r.extend();
+
         arm_moving = true;
     }
 
@@ -69,6 +70,8 @@ public class DeanaController {
     public void retract_arm() {
         arm_l.retract();
         arm_r.retract();
+
+        arm_moving = true;
     }
 
     public void starting_position() {

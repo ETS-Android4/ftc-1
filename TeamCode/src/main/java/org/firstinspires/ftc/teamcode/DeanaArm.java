@@ -21,7 +21,8 @@ public class DeanaArm {
 
     public void run() {
         if (motor.getTargetPosition() != motor.getCurrentPosition()) {
-            motor.setPower(0.75);
+            if (motor.getCurrentPosition() < 2250) motor.setPower(0.3);
+            else motor.setPower(0.8);
             arm_moving = true;
         } else arm_moving = false;
     }

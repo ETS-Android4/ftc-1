@@ -8,7 +8,7 @@ public class DeanaIntake {
 
     public DeanaIntake(CRServo s) {
         servo = s;
-        s.setDirection(CRServo.Direction.FORWARD);
+        servo.setDirection(CRServo.Direction.FORWARD);
     }
 
     public void run(double power) {
