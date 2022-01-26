@@ -31,10 +31,12 @@ public class DeanaTeleOp extends OpMode {
 
         // Carousel
         if (gamepad1.x) controller.run_carousel(1.0);
+        else controller.run_carousel(0.0);
 
         if (controller.arm_moving) controller.run_arm();
 
         telemetry.addData("Controller A ", gamepad1.id < 0 ? "not connected" : "connected");
         telemetry.addData("Controller B ", gamepad2.id < 0 ? "not connected" : "connected");
+        telemetry.addData("X", gamepad1.x);
     }
 }
