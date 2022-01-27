@@ -37,6 +37,7 @@ public class DeanaTeleOp extends OpMode {
 
         telemetry.addData("Controller A ", gamepad1.id < 0 ? "not connected" : "connected");
         telemetry.addData("Controller B ", gamepad2.id < 0 ? "not connected" : "connected");
-        telemetry.addData("X", gamepad1.x);
+        telemetry.addData("Arm L Moving", controller.arm_l.arm_moving);
+        telemetry.addData("Arm R Moving", controller.arm_r.arm_moving);
     }
 }

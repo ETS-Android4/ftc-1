@@ -18,6 +18,7 @@ public class DeanaArm {
     public DeanaArm(DcMotor m, boolean reverse, int o) {
         motor = m;
         offset = o;
+        arm_moving = false;
 
         if (reverse) motor.setDirection(DcMotor.Direction.REVERSE);
         else motor.setDirection(DcMotor.Direction.FORWARD);
@@ -33,7 +34,7 @@ public class DeanaArm {
             else if (motor.getCurrentPosition() < 2400) motor.setPower(0.6);
             else if (motor.getCurrentPosition() < 2450) motor.setPower(0.7);
             else motor.setPower(0.8);
-            arm_moving = true;
+            //arm_moving = true;
         } else arm_moving = false;
     }
 
