@@ -60,6 +60,11 @@ public class DeanaController {
         cup_r.spin();
     }
 
+    public void reset_cup() {
+        cup_l.reset();
+        cup_r.reset();
+    }
+
     public void run_intake(double power) {
         intake.run(power);
     }
