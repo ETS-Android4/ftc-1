@@ -28,8 +28,8 @@ public class DeanaTeleOp extends OpMode {
         if (gamepad1.y) controller.starting_position();
         if (gamepad1.right_trigger > 0) controller.run_intake(-gamepad1.right_trigger);
         else controller.run_intake(gamepad1.left_trigger);
-        if (gamepad1.left_bumper) controller.spin_cup((gamepad1.left_bumper ? 1.0 : 0.0) / -1000.0);
-        else if (gamepad1.right_bumper) controller.spin_cup((gamepad1.right_bumper ? 1.0 : 0.0) / 1000.0);
+        if (gamepad1.left_bumper) controller.spin_cup((gamepad1.left_bumper ? 1.0 : 0.0) / -500.0);
+        else if (gamepad1.right_bumper) controller.spin_cup((gamepad1.right_bumper ? 1.0 : 0.0) / 500.0);
 
         // Carousel
         if (gamepad1.x) controller.run_carousel(1.0);

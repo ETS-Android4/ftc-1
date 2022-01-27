@@ -22,7 +22,7 @@ public class DeanaServo {
         position += amount;
 
         if (position > 1) position = 1;
-        else if (position < 0) position = 0;
+        else if (position < -1) position = -1;
 
         servo.setPosition(position);
     }

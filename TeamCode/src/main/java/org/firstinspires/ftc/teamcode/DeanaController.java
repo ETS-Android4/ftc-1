@@ -26,8 +26,8 @@ public class DeanaController {
         motor_rb = new DeanaMotor(hardwareMap.dcMotor.get("motor_rb"), true);
         arm_l = new DeanaArm(hardwareMap.dcMotor.get("lift_l"), false);
         arm_r = new DeanaArm(hardwareMap.dcMotor.get("lift_r"), true);
-        cup_l = new DeanaServo(hardwareMap.servo.get("cup_l"), false);
-        cup_r = new DeanaServo(hardwareMap.servo.get("cup_r"), true);
+        cup_l = new DeanaServo(hardwareMap.servo.get("cup_l"), true);
+        cup_r = new DeanaServo(hardwareMap.servo.get("cup_r"), false);
         intake = new DeanaIntake(hardwareMap.crservo.get("intake"));
         carousel = new DeanaMotor(hardwareMap.dcMotor.get("carousel"), false);
 
