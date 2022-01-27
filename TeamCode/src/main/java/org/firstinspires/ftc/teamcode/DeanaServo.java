@@ -7,7 +7,8 @@ public class DeanaServo {
 
     Servo servo;
 
-    private final double starting_position = 0.33;
+    private final double starting_position = 0;
+    public double position;
 
     public DeanaServo(Servo s, boolean reverse) {
         servo = s;
@@ -17,8 +18,13 @@ public class DeanaServo {
         servo.setPosition(starting_position);
     }
 
-    public void spin(int amount) {
-        servo.setPosition(servo.getPosition() + amount);
+    public void spin(double amount) {
+        position += amount;
+
+        if (position > 1) position = 1;
+        else if (position < 0) position = 0;
+
+        servo.setPosition(position);
     }
 
     public void reset() {

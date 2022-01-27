@@ -11,8 +11,8 @@ public class DeanaController {
     private final DeanaMotor motor_rb;
     public final DeanaArm arm_l;
     public final DeanaArm arm_r;
-    private final DeanaServo cup_r;
-    private final DeanaServo cup_l;
+    public final DeanaServo cup_r;
+    public final DeanaServo cup_l;
     private final DeanaIntake intake;
     private final DeanaMotor carousel;
 
@@ -55,9 +55,9 @@ public class DeanaController {
         arm_moving = true;
     }
 
-    public void spin_cup() {
-        cup_l.spin();
-        cup_r.spin();
+    public void spin_cup(double amount) {
+        cup_l.spin(amount);
+        cup_r.spin(amount);
     }
 
     public void reset_cup() {

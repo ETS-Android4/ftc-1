@@ -28,8 +28,8 @@ public class DeanaTeleOp extends OpMode {
         if (gamepad1.y) controller.starting_position();
         if (gamepad1.right_trigger > 0) controller.run_intake(-gamepad1.right_trigger);
         else controller.run_intake(gamepad1.left_trigger);
-        if (gamepad1.left_bumper) controller.spin_cup();
-        else if (gamepad1.right_bumper) controller.reset_cup();
+        if (gamepad1.left_bumper) controller.spin_cup((gamepad1.left_bumper ? 1.0 : 0.0) / -1000.0);
+        else if (gamepad1.right_bumper) controller.spin_cup((gamepad1.right_bumper ? 1.0 : 0.0) / 1000.0);
 
         // Carousel
         if (gamepad1.x) controller.run_carousel(1.0);
@@ -41,7 +41,7 @@ public class DeanaTeleOp extends OpMode {
         telemetry.addData("Controller B ", gamepad2.id < 0 ? "not connected" : "connected");
         telemetry.addData("Arm L Moving", controller.arm_l.arm_moving);
         telemetry.addData("Arm R Moving", controller.arm_r.arm_moving);
-        telemetry.addData("Bumper L", gamepad1.left_bumper);
-        telemetry.addData("Bumper R", gamepad1.right_bumper);
+        telemetry.addData("Position L", controller.cup_l.position);
+        telemetry.addData("Position R", controller.cup_r.position);
     }
 }
