@@ -26,8 +26,8 @@ public class DeanaController {
         motor_rb = new DeanaMotor(hardwareMap.dcMotor.get("motor_rb"), true);
         arm_l = new DeanaArm(hardwareMap.dcMotor.get("lift_l"), false);
         arm_r = new DeanaArm(hardwareMap.dcMotor.get("lift_r"), true);
-        cup_l = new DeanaServo(hardwareMap.servo.get("cup_l"), true);
-        cup_r = new DeanaServo(hardwareMap.servo.get("cup_r"), false);
+        cup_l = new DeanaServo(hardwareMap.crservo.get("cup_l"), true);
+        cup_r = new DeanaServo(hardwareMap.crservo.get("cup_r"), false);
         intake = new DeanaIntake(hardwareMap.crservo.get("intake"));
         carousel = new DeanaMotor(hardwareMap.dcMotor.get("carousel"), false);
 
@@ -55,14 +55,9 @@ public class DeanaController {
         arm_moving = true;
     }
 
-    public void spin_cup(double amount) {
-        cup_l.spin(amount);
-        cup_r.spin(amount);
-    }
-
-    public void reset_cup() {
-        cup_l.reset();
-        cup_r.reset();
+    public void spin_cup(double power) {
+        cup_l.spin(power);
+        cup_r.spin(power);
     }
 
     public void run_intake(double power) {

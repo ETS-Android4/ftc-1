@@ -10,6 +10,7 @@ public class DeanaMotor {
         motor = m;
 
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         if (reverse) motor.setDirection(DcMotor.Direction.REVERSE);
         else motor.setDirection(DcMotor.Direction.FORWARD);
     }
