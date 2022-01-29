@@ -64,6 +64,13 @@ public class DeanaController {
         intake.run(power);
     }
 
+    public void run_arm(double power) {
+        arm_l.run(power);
+        arm_r.run(power);
+
+        arm_moving = arm_l.arm_moving || arm_r.arm_moving;
+    }
+
     public void run_arm() {
         arm_l.run();
         arm_r.run();
@@ -79,8 +86,15 @@ public class DeanaController {
     }
 
     public void starting_position() {
-        arm_l.set_position(1250);
-        arm_r.set_position(1250);
+        arm_l.set_position(0);
+        arm_r.set_position(0);
+
+        arm_moving = true;
+    }
+
+    public void set_arm_position(int position) {
+        arm_l.set_position(position);
+        arm_r.set_position(position);
 
         arm_moving = true;
     }

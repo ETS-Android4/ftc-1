@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 public class DeanaArm {
 
     private final int extend_length = 8000;
-    private DcMotor motor;
+    public DcMotor motor;
     private int offset;
 
     public boolean arm_moving;
@@ -25,6 +25,16 @@ public class DeanaArm {
         retract();
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         //motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
+
+    public void run(double power) {
+        if (motor.getTargetPosition() != motor.getCurrentPosition()) {
+            motor.setPower(power);
+            arm_moving = true;
+        } else {
+            motor.setPower(0.0);
+            arm_moving = false;
+        }
     }
 
     public void run() {
@@ -52,7 +62,7 @@ public class DeanaArm {
     }
 
     public void retract() {
-        motor.setTargetPosition(0);
+        motor.setTargetPosition(-1250);
     }
 
     public boolean in_range(int number, int min, int max) {
