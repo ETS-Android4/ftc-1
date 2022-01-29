@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class DeanaArm {
 
-    private final int extend_length = 8000;
+    private final int extend_length = 6750;
     public DcMotor motor;
     private int offset;
 
@@ -28,7 +28,8 @@ public class DeanaArm {
     }
 
     public void run(double power) {
-        if (motor.getTargetPosition() != motor.getCurrentPosition()) {
+        int diff = motor.getTargetPosition() - motor.getCurrentPosition();
+        if (diff < -5 || diff > 5) {
             motor.setPower(power);
             arm_moving = true;
         } else {
