@@ -7,10 +7,10 @@ import org.firstinspires.ftc.teamcode.DeanaController;
 
 
 @Autonomous(name = "Deana Blue Warehouse", group = "Deana")
-public class DeanaBlueWarehouseAutoOp extends LinearOpMode {
+public class DeanaRedWarehouseAutoOp extends LinearOpMode {
 
     DeanaController controller;
-    int m = 1;
+    int m = -1;
 
     @Override
     public void runOpMode() throws InterruptedException {
