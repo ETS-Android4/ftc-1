@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Function;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-@Autonomous(name = "Deana Blue Carousel", group = "Deana")
+@Autonomous(name = "Deana Red Carousel", group = "Deana")
 public class DeanaRedCarouselAutoOp extends LinearOpMode {
 
     DeanaController controller;

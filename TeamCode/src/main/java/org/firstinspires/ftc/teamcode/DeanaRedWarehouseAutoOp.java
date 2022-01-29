@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.DeanaController;
 
 
-@Autonomous(name = "Deana Blue Warehouse", group = "Deana")
+@Autonomous(name = "Deana Red Warehouse", group = "Deana")
 public class DeanaRedWarehouseAutoOp extends LinearOpMode {
 
     DeanaController controller;
