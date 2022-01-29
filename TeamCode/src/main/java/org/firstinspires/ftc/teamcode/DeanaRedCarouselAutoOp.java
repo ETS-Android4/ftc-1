@@ -31,7 +31,7 @@ public class DeanaRedCarouselAutoOp extends LinearOpMode {
             telemetry.addData("Target", controller.arm_l.motor.getTargetPosition());
 
             // Move out
-            controller.move_forward(0.5 * m);
+            controller.move_forward(0.5);
             sleep(900);
             controller.move_forward(0);
             standard_pause();
@@ -43,7 +43,7 @@ public class DeanaRedCarouselAutoOp extends LinearOpMode {
             standard_pause();
 
             // Move toward fondue table
-            controller.move_forward(0.5 * m);
+            controller.move_forward(0.5);
             sleep(480);
             controller.move_forward(0);
             standard_pause();
@@ -76,7 +76,7 @@ public class DeanaRedCarouselAutoOp extends LinearOpMode {
             run_arm(0.85);
 
             // Move to carousel
-            controller.move_forward(-0.5 * m);
+            controller.move_forward(-0.5);
             sleep(1650);
             controller.move_forward(0.0);
             standard_pause();
@@ -88,7 +88,7 @@ public class DeanaRedCarouselAutoOp extends LinearOpMode {
             standard_pause();
 
             // Move back
-            controller.move_forward(0.5 * m);
+            controller.move_forward(0.5);
             sleep(200);
             controller.move_forward(0.0);
             standard_pause();
@@ -106,7 +106,7 @@ public class DeanaRedCarouselAutoOp extends LinearOpMode {
             standard_pause();
 
             // Forward adjustment
-            controller.move_forward(-0.5 * m);
+            controller.move_forward(-0.5);
             sleep(300);
             controller.move_forward(0.0);
             standard_pause();

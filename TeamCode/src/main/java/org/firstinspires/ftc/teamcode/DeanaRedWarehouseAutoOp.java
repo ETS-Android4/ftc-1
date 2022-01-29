@@ -26,7 +26,7 @@ public class DeanaRedWarehouseAutoOp extends LinearOpMode {
             controller.starting_position();
             run_arm(0.5);
 
-            controller.move_forward(0.5 * m);
+            controller.move_forward(0.5);
             sleep(800);
             controller.move_forward(0.0);
             standard_pause();
@@ -36,7 +36,7 @@ public class DeanaRedWarehouseAutoOp extends LinearOpMode {
             controller.rotate(0.0);
             standard_pause();
 
-            controller.move_forward(-1.0 * m);
+            controller.move_forward(-1.0);
             sleep(1300);
             controller.move_forward(0.0);
 
