@@ -22,6 +22,10 @@ public class DeanaTeleOp extends OpMode {
         else if (gamepad1.right_stick_x == 0 ) controller.move_forward(fix_input(-gamepad1.left_stick_y));
         else if (gamepad1.left_stick_y == 0) controller.rotate(fix_input(-gamepad1.right_stick_x));
 
+        // Thing
+        if (gamepad1.dpad_up) controller.run_carousel(1.0);
+        else if (gamepad1.dpad_down) controller.run_carousel(-1.0);
+
         // Arm/Intake
         if (gamepad1.a) controller.extend_arm();
         if (gamepad1.b) controller.retract_arm();
