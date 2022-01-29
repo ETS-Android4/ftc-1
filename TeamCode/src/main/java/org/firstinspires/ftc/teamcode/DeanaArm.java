@@ -24,7 +24,7 @@ public class DeanaArm {
         else motor.setDirection(DcMotor.Direction.FORWARD);
         retract();
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void run() {
