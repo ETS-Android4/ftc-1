@@ -32,19 +32,20 @@ public class DeanaBlueWarehouseAutoOp extends LinearOpMode {
             standard_pause();
 
             controller.rotate(-0.5);
-            sleep(800);
+            sleep(1000);
             controller.rotate(0.0);
             standard_pause();
 
-            controller.move_forward(1.0);
-            sleep(1000);
+            controller.move_forward(-1.0);
+            sleep(1300);
             controller.move_forward(0.0);
-            standard_pause();
+
+            break;
         }
     }
 
     private void standard_pause() {
-        sleep(2000);
+        sleep(100);
     }
 
     private void run_arm(double power) {

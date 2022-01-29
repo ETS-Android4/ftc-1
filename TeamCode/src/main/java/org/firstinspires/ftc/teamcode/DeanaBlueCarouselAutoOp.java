@@ -26,7 +26,7 @@ public class DeanaBlueCarouselAutoOp extends LinearOpMode {
         while (opModeIsActive()) {
 
             controller.starting_position();
-            run_arm(1.0);
+            run_arm(0.85);
             telemetry.addData("Current", controller.arm_l.motor.getCurrentPosition());
             telemetry.addData("Target", controller.arm_l.motor.getTargetPosition());
 
@@ -50,7 +50,7 @@ public class DeanaBlueCarouselAutoOp extends LinearOpMode {
 
             // Extend arm
             controller.extend_arm();
-            run_arm(1.0);
+            run_arm(0.85);
             standard_pause();
 
             // Rotate cup
@@ -73,7 +73,7 @@ public class DeanaBlueCarouselAutoOp extends LinearOpMode {
 
             // Retract arm
             controller.starting_position();
-            run_arm(1.0);
+            run_arm(0.85);
 
             // Move to carousel
             controller.move_forward(-0.5 * m);
